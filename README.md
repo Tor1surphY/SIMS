@@ -4,7 +4,7 @@ A student information management system coded by C for practicing
 **IDE: Visual Studio 2019 Community**
 
 #### There are a uncompleted functions that I want to add:
-* Account system
+* Account system(already updated 2020-4-2)
 
 accounts separated as managers which can modify and search all the student's record and students which can only search their own record without modifying.
 
