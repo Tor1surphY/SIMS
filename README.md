@@ -15,6 +15,7 @@ If you want to load as a student, your account is your No.,and your password is 
 Current student list in record.txt:
 
 1 Luffy
+
 2 Nami
 
 3 Zoro
