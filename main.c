@@ -18,9 +18,28 @@ int main() {
     }
     fclose(fp);
     quickSort(phead, ptail);
-
     while (opr) {
-        menu(&phead, &ptail, cout);
+        int prm = account();
+        if (prm == 0) {
+            while (opr) {
+                menu(&phead, &ptail, cout);
+            }
+        }
+        else if (prm == -1 || prm == 1) {
+            system("cls");
+            printf("\nwrong account or password!\n\nplease input again\n");
+            system("pause");
+            ++i;
+        }
+        else {
+            system("cls");
+            show(prm, phead);
+        }
+        if (i > 2) {
+            system("cls");
+            printf("you have input wrong info over 3 times\n\nthe system will quit\n");
+            break;
+        }
     }
     system("pause");
 }

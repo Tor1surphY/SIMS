@@ -30,7 +30,6 @@ void menu(pStu* phead, pStu* ptail, int cout) {
     }
 }
 
-
 void save(pStu* phead, int cout) {
     FILE* fp;
     pStu pCur = *phead;
@@ -41,4 +40,84 @@ void save(pStu* phead, int cout) {
     }
     fprintf(fp, "%d %s %d %c %f %f %f", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
     fclose(fp);
+}
+
+int account() {
+
+    system("cls");
+    char account_M[50] = "shirohige123456\r";
+    char account_S[50] = "654321";
+    char m_a[50];
+    char m_p[50] = { 0 };
+    int ret;
+
+    printf("  Wellcome to the SIMS\n\n");
+    printf("please input your account: ");
+    scanf("%s", &m_a);
+    if (m_a[0] >= 49 && m_a[0] <= 57) {
+        ret = studen(m_a);
+    }
+    else {
+        printf("please input your password: ");
+        for (int i = 0; i < 50; i++) {
+            m_p[i] = _getch();
+            if (m_p[i] == '\r') {
+                break;
+            }
+            printf("*");
+        }
+        strcat(m_a, m_p);
+        ret = strcmp(account_M, m_a);
+    }
+    return ret;
+}
+
+void HEAD(){
+    printf("  No.     Name  Age Sex Chinese   Math  English\n");
+}
+
+int studen(char* m_a) {
+    int i = 0;
+    int no = 0;
+    char m_p[50] = { 0 };
+    if (m_a[i] != '\r') {
+        no += (int)m_a[i] - 48;
+        ++i;
+    }
+    printf("please input your password: ");
+    for (int i = 0; i < 50; i++) {
+        m_p[i] = _getch();
+        if (m_p[i] == '\r') {
+            break;
+        }
+        printf("*");
+    }
+    int ret = strcmp("123456\r", m_p);
+    if (ret == 0) {
+        return no + 10;
+    }
+    else{
+        return ret;
+    }
+}
+
+void show(int no, pStu phead) {
+	no = no - 10;
+	pStu pCur = phead;
+	while (pCur) {
+		if (pCur->no == no) {
+            printf("your record is:\n");
+			HEAD();
+			printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
+			break;
+		}
+		else {
+			pCur = pCur->pNext;
+		}
+	}
+	if (pCur == NULL) {
+		printf("not found, please input again:\n");
+	}
+    system("pause");
+    return;
 }

@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 #define LEN 15 // lenth of name character
-#define N 200  // student number
 
 
 typedef struct record{
@@ -18,7 +18,10 @@ typedef struct record{
     struct  record* pNext;      // pointer of list
 }stu, *pStu;
 
-
+void HEAD();                        // list head print
+void show(int, pStu);               // display the target student's record
+int studen(char*);                  // student option
+int account();                      // loading
 void search(pStu*);                 // search record
 void modify(pStu*);                 // modify record
 void menu(pStu*, pStu*, int);       // menu

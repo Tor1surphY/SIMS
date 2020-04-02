@@ -18,7 +18,7 @@ int listInsert(pStu* phead, pStu* ptail, pStu new) {
 
 void listPrint(pStu* phead) {
 	system("cls");
-	printf("No.     Name  Age Sex Chinese   Math  English\n");
+	HEAD();
 	pStu pCur = *phead;
 	while (pCur) {
 		printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
@@ -49,6 +49,7 @@ void search(pStu* phead) {
 				}
 				while (pCur) {
 					if (pCur->no == no) {
+						HEAD();
 						printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
 						break;
 					}
@@ -71,6 +72,7 @@ void search(pStu* phead) {
 				}
 				while (pCur) {
 					if (strcmp(pCur->name, name) == 0) {
+						HEAD();
 						printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
 						pCur = pCur->pNext;
 					}
@@ -90,6 +92,7 @@ void search(pStu* phead) {
 				}
 				while (pCur) {
 					if (pCur->age == age) {
+						HEAD();
 						printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
 						pCur = pCur->pNext;
 					}
@@ -110,6 +113,7 @@ void search(pStu* phead) {
 				}
 				while (pCur) {
 					if (pCur->sex == sex) {
+						HEAD();
 						printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
 						pCur = pCur->pNext;
 					}
@@ -140,6 +144,7 @@ void modify(pStu* phead) {
 		}
 		while (pCur) {
 			if (pCur->no == no) {
+				HEAD();
 				printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
 				change(pCur);
 				break;
@@ -183,6 +188,7 @@ void insert(pStu* phead, pStu* ptail) {
 	pStu pCur = *phead;
 	pStu pPre = *phead;
 	printf("please input the new record:\n");
+	HEAD();
 	scanf("%d%s%d %c%f%f%f", &new->no, &new->name, &new->age, &new->sex, &new->chnScr, &new->mahScr, &new->engScr);
 	if (*phead == NULL) {
 		*phead = new;
