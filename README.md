@@ -28,6 +28,6 @@ Current student list in record.txt:
 
 #### Bugs known:
 
-If you add new record ending with double "\n", then you will find a new record as 0, so you will see the no. of students does not match thier record as they would be.
+If you add new record ending with double "\n", then you will find a new record as 0, so you will see the no. of students does not match thier record as they suppose be.
 
 Will optimize and upadte futher.
