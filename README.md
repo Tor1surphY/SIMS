@@ -30,7 +30,7 @@ Current student list in record.txt:
 
 ### Demo
 
-[图片]
+
 
 
 ### Bugs known:
