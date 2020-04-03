@@ -25,9 +25,12 @@ Current student list in record.txt:
 5 Ussopu
 
 9 Jinpe
+
 ---
+
 ### Demo
 
+[图片]
 
 
 ### Bugs known:
