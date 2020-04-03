@@ -30,7 +30,7 @@ Current student list in record.txt:
 
 ### Demo
 
-
+![avatar](demo1.png)
 
 
 ### Bugs known:
