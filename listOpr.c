@@ -1,7 +1,19 @@
 #include "head.h"
 
+
+/*
+function:
+initalizing list by tail insert
+parameter:
+the addr of head and tail pointer, pointer of new node
+return:
+the numbers of nodes
+*/
+
 int listInsert(pStu* phead, pStu* ptail, pStu new) {
+
 	int num = 0;
+
 	if (*phead == NULL) {
 		*phead = new;
 		*ptail = new;
@@ -13,34 +25,52 @@ int listInsert(pStu* phead, pStu* ptail, pStu new) {
 		new->pNext = NULL;
 		++num;
 	}
+
 	return num;
+
 }
 
 void listPrint(pStu* phead) {
+	
+	pStu pCur = *phead;
+
 	system("cls");
 	HEAD();
-	pStu pCur = *phead;
 	while (pCur) {
 		printf(" %2d %10s %3d   %c  %-7.2f %-7.2f %-7.2f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
 		pCur = pCur->pNext;
 	}
 	system("pause");
 	system("cls");
+
 }
 
+/*
+function:
+display record by choosing different categories
+parameter:
+opreation tag 
+return:
+back to menu
+*/
+
 void search(pStu* phead) {
+	
+	int tag;
+
 	system("cls");
-	int val;
 	while (
+
 		printf("1. search by No.\n"),
 		printf("2. search by Name\n"),
 		printf("3. search by Age\n"),
 		printf("4. search by Sex\n"),
 		printf("5. back to menu\n\n"),
-		printf("please select which categorie you want to search: "), scanf("%d", &val)) {
+
+		printf("please select which categorie you want to search: "), scanf("%d", &tag)) {
 		pStu pCur = *phead;
 		system("cls");
-		switch (val) {
+		switch (tag) {
 		case 1: printf("please input No. (0 to back):\n");
 			int no;
 			while(scanf("%d", &no)){
@@ -130,13 +160,21 @@ void search(pStu* phead) {
 		default:system("cls"), printf("operation must between 1 to 4\n");
 		}
 	}
+
 }
 
+/*
+function:
+first make sure the No of inputing exists
+if exist, go to the change()
+*/
+
 void modify(pStu* phead) {
-	system("cls");
-	int no;
 	
+	int no;
 	pStu pCur = *phead;
+
+	system("cls");
 	while (system("cls"), 
 		printf("please input the no. of the student that you want to modify: (0 to back)\n"), scanf("%d", &no)) {
 		if (no == 0) {
@@ -163,13 +201,16 @@ void modify(pStu* phead) {
 }
 
 void change(pStu pCur) {
+
+	int val;
+	float score;
+
 	printf("1. change Chinese score\n");
 	printf("2. change Math score\n");
 	printf("3. change English score\n");
 	printf("4. back\n\n");
 	printf("please select which subject you want to change: ");
-	int val;
-	float score;
+
 	while (scanf("%d", &val) != 0) {
 		printf("please input the new score: ");
 		switch (val) {
@@ -180,13 +221,22 @@ void change(pStu pCur) {
 		default:system("cls"), printf("operation must between 1 to 4\n");
 		}
 	}
+
 }
 
+/*
+function:
+insert new node in sort
+if succeeded, back to menu
+*/
+
 void insert(pStu* phead, pStu* ptail) {
-	system("cls");
+	
 	pStu new = (pStu)calloc(1, sizeof(stu));
 	pStu pCur = *phead;
 	pStu pPre = *phead;
+
+	system("cls");
 	printf("please input the new record:\n");
 	HEAD();
 	scanf("%d%s%d %c%f%f%f", &new->no, &new->name, &new->age, &new->sex, &new->chnScr, &new->mahScr, &new->engScr);
@@ -222,13 +272,16 @@ void insert(pStu* phead, pStu* ptail) {
 	}
 	printf("add succeeded\n");
 	system("pause");
+
 }
 
 void del(pStu* phead, pStu* ptail) {
-	system("cls");
+	
 	pStu pCur = *phead;
 	pStu pPre = *phead;
 	int val;
+
+	system("cls");
 	printf("input the student No. that your want to delete:\n");
 	scanf("%d", &val);
 	if (NULL == pCur) {
@@ -265,21 +318,32 @@ void del(pStu* phead, pStu* ptail) {
 	}
 	printf("delete succeeded\n");
 	system("pause");
+
 }
 
+/*
+function:
+list quick sort
+recursive function
+*/
+
 void quickSort(pStu phead, pStu ptail) {
+
 	if (phead != ptail) {
 		pStu tag = partition(phead, ptail);
 		quickSort(phead, tag);
 		quickSort(tag->pNext, ptail);
 	}
 	return;
+
 }
 
 pStu partition(pStu phead, pStu ptail) {
+
 	int key = phead->no;
 	pStu pCur = phead->pNext;
 	pStu pPre = phead;
+
 	while (pCur != ptail) {
 		if (pCur->no < key) {
 			SWAP(pPre, pCur);
@@ -293,10 +357,13 @@ pStu partition(pStu phead, pStu ptail) {
 	}
 	SWAP(phead, pPre);
 	return pPre;
+
 }
 
 void SWAP(pStu a, pStu b) {
+
 	pStu tmp = (pStu)calloc(1, sizeof(stu));
+
 	tmp->no = a->no;
 	tmp->age = a->age;
 	tmp->name[LEN - 1] = a->name[LEN - 1];
@@ -320,6 +387,5 @@ void SWAP(pStu a, pStu b) {
 	b->chnScr = tmp->chnScr;
 	b->mahScr = tmp->mahScr;
 	b->engScr = tmp->engScr;
-
 
 }

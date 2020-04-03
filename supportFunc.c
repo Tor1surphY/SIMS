@@ -1,11 +1,13 @@
 #include "head.h"
 
+
 extern int opr;            // operating tag
 
-
 void menu(pStu* phead, pStu* ptail, int cout) {
-    system("cls");
+    
     int num;
+
+    system("cls");
     printf("\n");
     printf("---------------------------------------------------------\n\n");
     printf("           Student Information Management System         \n\n");
@@ -19,6 +21,7 @@ void menu(pStu* phead, pStu* ptail, int cout) {
     printf("---------------------------------------------------------\n");
     printf("Please input your operating number: ");
     scanf("%d", &num);
+
     switch (num) {
     case 1:search(phead); break;
     case 2:modify(phead); break;
@@ -28,11 +31,14 @@ void menu(pStu* phead, pStu* ptail, int cout) {
     case 6:save(phead, cout), printf("\nsaving succeeded.\n"), opr = 0; break;
     default:system("cls"), printf("operation must between 1 to 6\n"),system("pause");
     }
+
 }
 
 void save(pStu* phead, int cout) {
+
     FILE* fp;
     pStu pCur = *phead;
+
     fp = fopen("record.txt", "w");
     while(pCur->pNext != NULL) {
         fprintf(fp, "%d %s %d %c %f %f %f\n", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
@@ -40,17 +46,26 @@ void save(pStu* phead, int cout) {
     }
     fprintf(fp, "%d %s %d %c %f %f %f", pCur->no, pCur->name, pCur->age, pCur->sex, pCur->chnScr, pCur->mahScr, pCur->engScr);
     fclose(fp);
+
 }
 
-int account() {
+/*
+function:
+1.device manager and student by different account inputing
+2.using * to cover the password when user inputing
+return:
+ret is a parameter feeding to main() that controls the devicement 
+*/
 
-    system("cls");
+int account() {
+    
     char account_M[50] = "shirohige123456\r";
     char account_S[50] = "654321";
     char m_a[50];
     char m_p[50] = { 0 };
     int ret;
 
+    system("cls");
     printf("  Wellcome to the SIMS\n\n");
     printf("please input your account: ");
     scanf("%s", &m_a);
@@ -70,16 +85,21 @@ int account() {
         ret = strcmp(account_M, m_a);
     }
     return ret;
+
 }
 
 void HEAD(){
+
     printf("  No.     Name  Age Sex Chinese   Math  English\n");
+
 }
 
 int studen(char* m_a) {
+
     int i = 0;
     int no = 0;
     char m_p[50] = { 0 };
+
     if (m_a[i] != '\r') {
         no += (int)m_a[i] - 48;
         ++i;
@@ -92,6 +112,7 @@ int studen(char* m_a) {
         }
         printf("*");
     }
+
     int ret = strcmp("123456\r", m_p);
     if (ret == 0) {
         return no + 10;
@@ -99,11 +120,14 @@ int studen(char* m_a) {
     else{
         return ret;
     }
+
 }
 
 void show(int no, pStu phead) {
+
 	no = no - 10;
 	pStu pCur = phead;
+
 	while (pCur) {
 		if (pCur->no == no) {
             printf("your record is:\n");
@@ -118,6 +142,8 @@ void show(int no, pStu phead) {
 	if (pCur == NULL) {
 		printf("not found, please input again:\n");
 	}
+
     system("pause");
     return;
+
 }
