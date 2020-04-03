@@ -32,6 +32,14 @@ Current student list in record.txt:
 
 ![avatar](demo1.png)
 
+![avatar](demo2.png)
+
+![avatar](demo3.png)
+
+![avatar](demo4.png)
+
+![avatar](demo5.png)
+
 
 ### Bugs known:
 
