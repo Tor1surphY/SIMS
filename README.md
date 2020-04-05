@@ -40,6 +40,7 @@ Current student list in record.txt:
 
 ![avatar](demo5.png)
 
+---
 
 ### Bugs known:
 
