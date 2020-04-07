@@ -2,7 +2,13 @@
 
 **A student information management system coded by C for practicing**
 
-IDE: Visual Studio 2019 Community
+**data structure: linkList**
+
+**algorithm: quickSort(manual coded)**
+
+**IDE: Visual Studio 2019 Community**
+
+---
 
 ### Account system
 
