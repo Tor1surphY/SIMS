@@ -4,33 +4,41 @@
 #include <string.h>
 #include <conio.h>
 
-#define LEN 15 // lenth of name character
+#define MAX_NAME_LEN 15
+#define HEAD(){ printf("  No.     Name  Age Sex Chinese   Math  English\n"); }
 
+typedef struct node{
+    int     no;
+    int     age;
+    char    sex;
+    float   chnScr;               // score of chinese
+    float   mahScr;               // score of math
+    float   engScr;               // score of english
+    char    name[MAX_NAME_LEN + 1];
+    struct  node* p_next;
+}student, *p_student;
 
-typedef struct record{
-    int no;                     // no.
-    char name[LEN + 1];         // name
-    int age;                    // age
-    char sex;                   // gender
-    float chnScr;               // score of chinese
-    float mahScr;               // score of math
-    float engScr;               // score of english
-    struct  record* pNext;      // pointer of list
-}stu, *pStu;
+// modify function
+void SelectSearchCatigories(p_student*);
+void FindStuNeedChanged(p_student*);
+void ChangeScore(p_student);
+void AddNewRecord(p_student*, p_student*);
+void DelStuInfo(p_student*, p_student*);
 
-void HEAD();                        // list head print
-void show(int, pStu);               // display the target student's record
-int studen(char*);                  // student option
-int account();                      // loading
-void search(pStu*);                 // search record
-void modify(pStu*);                 // modify record
-void menu(pStu*, pStu*, int);       // menu
-void listPrint(pStu* phead);        // print current list
-int listInsert(pStu*, pStu*, pStu); // initalize the list from .txt
-void change(pStu);                  // change score
-void insert(pStu*, pStu*);          // add a new record
-void del(pStu*, pStu*);             // delete
-void save(pStu*, int);              // save change
-void quickSort(pStu, pStu);         // quick sort records by No.
-    pStu partition(pStu, pStu);
-    void SWAP(pStu, pStu);
+// system function
+void ListInit(p_student*, p_student*, p_student);
+void Menu(p_student*, p_student*);
+void SaveBeforeQuit(p_student*);
+
+// account function
+int AccountDiffer();
+int IsStudent(char*);
+
+// display function
+void DisplayOneStuInfo(int, p_student);
+void DisplayAllStuInfo(p_student*);
+
+// sort
+void Sort(p_student, p_student);
+p_student Partition(p_student, p_student);
+void Swap(p_student, p_student);

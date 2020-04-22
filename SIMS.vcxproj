@@ -138,9 +138,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="listOpr.c" />
+    <ClCompile Include="account_function.c" />
+    <ClCompile Include="display_function.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="supportFunc.c" />
+    <ClCompile Include="modify_function.c" />
+    <ClCompile Include="sort.c" />
+    <ClCompile Include="system_function.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h" />

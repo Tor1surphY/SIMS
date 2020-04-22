@@ -1,43 +1,48 @@
 #include "head.h"
 
-int opr = 1;            // operating tag
+// operating tag, when it changed to 0, the system will quit
+int system_quit = 1;
 
 int main() {
 
-    pStu phead = NULL;
-    pStu ptail = NULL;
-    FILE* fp;
-    int i = 0;
-    int cout = 0;
+    p_student p_head = NULL;
+    p_student p_tail = NULL;
+    FILE* file;
+    int error_times = 0;
 
-    fp = fopen("record.txt", "r");
-    while (!feof(fp)) {
-        pStu new = (pStu)calloc(1, sizeof(stu));
-        fscanf(fp, "%d%s%d %c%f%f%f", &new->no, &new->name, &new->age, &new->sex, &new->chnScr, &new->mahScr, &new->engScr);
-        cout = listInsert(&phead, &ptail, new);
+    file = fopen("record.txt", "r");
+    while (!feof(file)) {
+        p_student new = (p_student)calloc(1, sizeof(student));
+        fscanf(file, "%d%s%d %c%f%f%f", &new->no, &new->name, &new->age, &new->sex, &new->chnScr, &new->mahScr, &new->engScr);
+        ListInit(&p_head, &p_tail, new);
     }
-    fclose(fp);
+    fclose(file);
 
-    quickSort(phead, ptail);
+    Sort(p_head, p_tail);
 
-    while (opr) {
-        int prm = account();
-        if (prm == 0) {
-            while (opr) {
-                menu(&phead, &ptail, cout);
+    while (system_quit) {
+
+        // 0       for manager
+        // -1 or 1 for wrong input
+        // others  for student, "others" is the no. of the student
+        int stu_or_manager = AccountDiffer();
+
+        if (stu_or_manager == 0) {
+            while (system_quit) {
+                Menu(&p_head, &p_tail);
             }
         }
-        else if (prm == -1 || prm == 1) {
+        else if (stu_or_manager == -1 || stu_or_manager == 1) {
             system("cls");
             printf("\nwrong account or password!\n\nplease input again\n");
             system("pause");
-            ++i;
+            ++error_times;
         }
         else {
             system("cls");
-            show(prm, phead);
+            DisplayOneStuInfo(stu_or_manager, p_head);
         }
-        if (i > 2) {
+        if (error_times > 2) {
             system("cls");
             printf("you have input wrong info over 3 times\n\nthe system will quit\n");
             break;
