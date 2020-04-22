@@ -10,6 +10,12 @@
 
 ---
 
+### Update 2020/04/23
+
+Optimized code after reading *The Art of Readable Code: PartⅠ*
+
+---
+
 ### Account system
 
 accounts separated as managers which can modify and search all the student's record and students which can only search their own record without modifying.
