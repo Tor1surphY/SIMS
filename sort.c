@@ -41,9 +41,9 @@ void Swap(p_student a, p_student b) {
 	tmp->no		= a->no;
 	tmp->age	= a->age;
 	tmp->sex	= a->sex;
-	tmp->chnScr = a->chnScr;
-	tmp->mahScr = a->mahScr;
-	tmp->engScr = a->engScr;
+	tmp->chnScr 	= a->chnScr;
+	tmp->mahScr 	= a->mahScr;
+	tmp->engScr 	= a->engScr;
 	tmp->name[MAX_NAME_LEN - 1] = a->name[MAX_NAME_LEN - 1];
 
 	a->no		= b->no;
