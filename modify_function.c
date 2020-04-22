@@ -17,6 +17,11 @@ void SelectSearchCatigories(p_student* p_head) {
 		scanf("%d", &menu_opr)) {
 		p_student stu_to_be_found = *p_head;
 		system("cls");
+		
+		// this part might looked mass
+		// but it will be clear when just focus on categories
+		// it is not supposed to be repeat like this
+		// it should be optimised futher
 		switch (menu_opr) {
 		case 1: printf("please input No. (0 to back):\n");
 			int target_stu;
