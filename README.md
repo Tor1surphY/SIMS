@@ -1,4 +1,4 @@
-# SIMY
+# StudentInfomationManagementSystem
 
 **A student information management system coded by C for practicing**
 
