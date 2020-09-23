@@ -42,15 +42,15 @@ Current student list in record.txt:
 
 ### Demo
 
-![avatar](demo1.png)
+![avatar](demo/demo1.png)
 
-![avatar](demo2.png)
+![avatar](demo/demo2.png)
 
-![avatar](demo3.png)
+![avatar](demo/demo3.png)
 
-![avatar](demo4.png)
+![avatar](demo/demo4.png)
 
-![avatar](demo5.png)
+![avatar](demo/demo5.png)
 
 ---
 
